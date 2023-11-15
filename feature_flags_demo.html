@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Demo</title>
+  <script type="text/javascript">
+    +function(a, p, P, b, y) {
+      a.braze = {};
+      a.brazeQueue = [];
+      for (var s = "BrazeSdkMetadata DeviceProperties Card Card.prototype.dismissCard Card.prototype.removeAllSubscriptions Card.prototype.removeSubscription Card.prototype.subscribeToClickedEvent Card.prototype.subscribeToDismissedEvent Card.fromContentCardsJson ImageOnly CaptionedImage ClassicCard ControlCard ContentCards ContentCards.prototype.getUnviewedCardCount Feed Feed.prototype.getUnreadCardCount ControlMessage InAppMessage InAppMessage.SlideFrom InAppMessage.ClickAction InAppMessage.DismissType InAppMessage.OpenTarget InAppMessage.ImageStyle InAppMessage.Orientation InAppMessage.TextAlignment InAppMessage.CropType InAppMessage.prototype.closeMessage InAppMessage.prototype.removeAllSubscriptions InAppMessage.prototype.removeSubscription InAppMessage.prototype.subscribeToClickedEvent InAppMessage.prototype.subscribeToDismissedEvent InAppMessage.fromJson FullScreenMessage ModalMessage HtmlMessage SlideUpMessage User User.Genders User.NotificationSubscriptionTypes User.prototype.addAlias User.prototype.addToCustomAttributeArray User.prototype.addToSubscriptionGroup User.prototype.getUserId User.prototype.getUserId User.prototype.incrementCustomUserAttribute User.prototype.removeFromCustomAttributeArray User.prototype.removeFromSubscriptionGroup User.prototype.setCountry User.prototype.setCustomLocationAttribute User.prototype.setCustomUserAttribute User.prototype.setDateOfBirth User.prototype.setEmail User.prototype.setEmailNotificationSubscriptionType User.prototype.setFirstName User.prototype.setGender User.prototype.setHomeCity User.prototype.setLanguage User.prototype.setLastKnownLocation User.prototype.setLastName User.prototype.setPhoneNumber User.prototype.setPushNotificationSubscriptionType InAppMessageButton InAppMessageButton.prototype.removeAllSubscriptions InAppMessageButton.prototype.removeSubscription InAppMessageButton.prototype.subscribeToClickedEvent FeatureFlag FeatureFlag.prototype.getStringProperty FeatureFlag.prototype.getNumberProperty FeatureFlag.prototype.getBooleanProperty automaticallyShowInAppMessages destroyFeed hideContentCards showContentCards showFeed showInAppMessage deferInAppMessage toggleContentCards toggleFeed changeUser destroy getDeviceId getDeviceId initialize isPushBlocked isPushPermissionGranted isPushSupported logCardClick logCardDismissal logCardImpressions logContentCardImpressions logContentCardClick logCustomEvent logFeedDisplayed logInAppMessageButtonClick logInAppMessageClick logInAppMessageHtmlClick logInAppMessageImpression logPurchase openSession requestPushPermission removeAllSubscriptions removeSubscription requestContentCardsRefresh requestFeedRefresh refreshFeatureFlags requestImmediateDataFlush enableSDK isDisabled setLogger setSdkAuthenticationSignature addSdkMetadata disableSDK subscribeToContentCardsUpdates subscribeToFeedUpdates subscribeToInAppMessage subscribeToSdkAuthenticationFailures toggleLogging unregisterPush wipeData handleBrazeAction subscribeToFeatureFlagsUpdates getAllFeatureFlags logFeatureFlagImpression"
+          .split(" "), i = 0; i < s.length; i++) {
+        for (var m = s[i], k = a.braze, l = m.split("."), j = 0; j < l.length - 1; j++) k = k[l[j]];
+            k[l[j]] = (new Function("return function " + m.replace(/\./g, "_") + "(){window.brazeQueue.push(arguments); return true}"))()
+    }
+    window.braze.getDeferredInAppMessage = function() {
+        return new window.braze.InAppMessage
+    };
+    window.braze.getCachedContentCards = function() {
+        return new window.braze.ContentCards
+    };
+    window.braze.getCachedFeed = function() {
+        return new window.braze.Feed
+    };
+    window.braze.getUser = function() {
+        return new window.braze.User
+    };
+    window.braze.getFeatureFlag = function() {
+        return new window.braze.FeatureFlag
+    };
+    (y = p.createElement(P)).type = 'text/javascript';
+    y.src = 'https://js.appboycdn.com/web-sdk/5.0/braze.min.js';
+    y.async = 1;
+    (b = p.getElementsByTagName(P)[0]).parentNode.insertBefore(y, b)
+}(window, document, 'script');
+
+    // initialize the SDK
+braze.initialize('fa77a9b8-2117-4b0d-a34f-35651e242375', {
+  baseUrl: "sondheim.braze.com",
+  enableLogging: true
+});
+
+    // optionally show all in-app messages without custom handling
+braze.automaticallyShowInAppMessages();
+
+    // `openSession` should be called last - after `changeUser` and `automaticallyShowInAppMessages`
+braze.openSession();
+</script>
+</head>
+
+<body>
+
+
+    <!-- Input box for user login -->
+    <label for="userIdInput">User ID:</label>
+    <input type="text" id="userIdInput">
+    <button onclick="loginUser()">Login</button>
+
+    <button id="toggleButton" onclick="toggleUI()">Switch to Old Design</button>
+
+    <!-- Blog content -->
+    <div id="blogPosts">
+        <h2 id="blogPostsHeading">Latest Posts</h2>
+        <div class="blogPost">
+          <h3>Title 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non libero nec metus convallis lacinia vel
+          vitae elit.</p>
+      </div>
+      <div class="blogPost">
+          <h3>Title 2</h3>
+          <p>Integer sit amet elit in dolor tincidunt bibendum vitae vel urna. Nulla facilisi.</p>
+      </div>
+      <div class="blogPost">
+          <h3>Title 3</h3>
+          <p>Proin eget neque fermentum, varius nisi ac, hendrerit lectus. Fusce ac ligula ut purus scelerisque laoreet.</p>
+      </div>
+  </div>
+
+  <style>
+    /* Default UI styles */
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+  }
+
+  /* New UI styles */
+  body[data-new-ui="true"] {
+      background-color: #d3eaf0;
+      color: #14566d;
+  }
+
+  #blogPosts {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .blogPost {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+  }
+
+  h2,
+  h3 {
+      color: #14566d;
+  }
+
+  /* Add some basic styling to the button */
+  button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #14566d; /* light navy blue background color */
+      color: white; /* White text color */
+      border: none; /* Remove border */
+      border-radius: 4px; /* Add border radius */
+      cursor: pointer; /* Add cursor on hover */
+  }
+
+  /* Change button style on hover */
+  button:hover {
+      background-color: #0e4458;
+  }
+
+  button#toggleButton {
+      display: none; /* Hide the button by default */
+  }
+
+
+
+</style>
+
+<script>
+    // Sample code to control UI based on feature flag
+    let featureFlag = braze.getFeatureFlag("new-ui");
+    var button = document.getElementById('toggleButton');
+
+    // Function to update UI based on feature flag
+    function updateUI() {
+      if (featureFlag?.enabled) {
+        const customTitleProperty = featureFlag.getStringProperty("custom_title");
+        const numberProperty = featureFlag.getNumberProperty("number");
+        // Use new feature UI
+        document.body.style.backgroundColor = "#d3eaf0";
+        document.body.style.color = "#14566d";
+        document.getElementById('blogPostsHeading').innerText = customTitleProperty;
+        button.style.display = "inline";
+        console.log("User's custom title is " + customTitleProperty);
+        console.log("User's random number is " + numberProperty);
+        console.log("Feature Flag is enabled.");
+    } else {
+        // Use old feature UI
+        document.body.style.backgroundColor = "#f5f5f5";
+        document.body.style.color = "#333";
+        document.getElementById('blogPostsHeading').innerText = "Latest Posts";
+        button.style.display = "none";
+        console.log("Feature Flag is NOT enabled.");
+    }
+}
+
+
+    // Initial UI update
+updateUI();
+
+    // Function to handle login with a password
+function loginUser() {
+      // Get user ID from the input box (replace 'userIdInput' with your actual input box ID)
+  const userId = document.getElementById('userIdInput').value;
+
+      // Call Braze API to change user
+  braze.changeUser(userId);
+
+      // Re-run logic to check if feature flag is enabled and update UI after a 3-second delay
+  console.log("Waiting for 3-second delay");
+  setTimeout(function() {
+    featureFlag = braze.getFeatureFlag("new-ui");
+    updateUI();
+
+        // Check if the feature flag is enabled for the user and add text accordingly
+    if (featureFlag?.enabled) {
+      const customTitleProperty = featureFlag.getStringProperty("custom_title");
+      document.getElementById('blogPostsHeading').innerText = customTitleProperty;
+  } else {
+    blogPostsHeading.innerText = "Latest Posts";
+}
+
+console.log("Delay complete.");
+}, 3000);
+}
+
+function toggleUI() {
+  updateUI_no_ff();
+}
+
+function updateUI_no_ff() {
+  if (featureFlag?.enabled) {
+    console.log("Feature Flag is enabled...checking current design switch.");
+    const customTitleProperty = featureFlag.getStringProperty("custom_title");
+    if (button.innerText == "Switch to New Design") {
+                    // Use new feature UI
+        document.body.style.backgroundColor = "#d3eaf0";
+        document.body.style.color = "#14566d";
+        blogPostsHeading.innerText = customTitleProperty;
+        button.innerText = "Switch to Old Design"
+        console.log("Reverting back to new design.");
+
+    }else {
+        document.body.style.backgroundColor = "#f5f5f5"
+        document.body.style.color = "#333";
+        document.getElementById('blogPostsHeading').innerText = "Latest Posts";
+        button.innerText = "Switch to New Design"  
+        console.log("Reverting back to old design.");
+    }
+} else {
+    console.log("Feature Flag is NOT enabled.")
+    button.style.display = "none";
+}
+}
+
+</script>
+
+</body>
+
+</html>
